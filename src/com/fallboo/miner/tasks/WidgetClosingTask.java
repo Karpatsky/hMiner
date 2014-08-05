@@ -5,6 +5,7 @@
  */
 package com.fallboo.miner.tasks;
 
+import com.fallboo.miner.tasks.GraphScript.Action;
 import org.powerbot.script.rt6.ClientContext;
 import org.powerbot.script.rt6.Widget;
 
@@ -12,7 +13,7 @@ import org.powerbot.script.rt6.Widget;
  *
  * @author Jake
  */
-public class WidgetClosingTask extends MineTask<ClientContext> {
+public class WidgetClosingTask extends Action<ClientContext> {
 
     private final Widget level, task;
 
@@ -23,17 +24,16 @@ public class WidgetClosingTask extends MineTask<ClientContext> {
     }
 
     @Override
-    public boolean activate() {
+    public boolean valid() {
         return level.component(236).visible() || task.component(17).visible();
     }
 
     @Override
-    public void execute() {
+    public void run() {
         if (level.component(236).visible()) {
             level.component(236).click();
         } else if (task.component(17).visible()) {
             task.component(17).click();
         }
     }
-
 }
