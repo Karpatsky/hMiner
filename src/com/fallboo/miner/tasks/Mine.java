@@ -12,10 +12,9 @@ import org.powerbot.script.rt6.Interactive;
 
 public class Mine extends GraphScript.Action<ClientContext> {
 
-    Mines mine = Mines.VARROCK_WEST;
-    Ores ore = Ores.IRON;
-    //GameObject interacting = null;
-    OreClicker oreClicker;
+    private final Mines mine;
+    private final Ores ore;
+    private final OreClicker oreClicker;
 
     public Mine(ClientContext ctx, Mines mines, Ores ores) {
         super(ctx);

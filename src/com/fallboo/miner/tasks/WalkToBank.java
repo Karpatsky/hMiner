@@ -12,9 +12,9 @@ import org.powerbot.script.rt6.ClientContext;
 public class WalkToBank extends GraphScript.Action<ClientContext> {
 
     private final Style style;
-    private Bars bars;
-    private Tile bank;
-    private Tile[] pathToBank;
+    private final Bars bars;
+    private final Tile bank;
+    private final Tile[] pathToBank;
 
     public WalkToBank(ClientContext ctx, Mines mines, Furnaces furnaces, Style style, Bars bars) {
         super(ctx);

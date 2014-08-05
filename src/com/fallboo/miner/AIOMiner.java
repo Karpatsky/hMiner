@@ -14,7 +14,6 @@ import com.fallboo.miner.tasks.BankOres;
 import com.fallboo.miner.tasks.GraphScript;
 import com.fallboo.miner.tasks.KeyUsing;
 import com.fallboo.miner.tasks.Mine;
-import com.fallboo.miner.tasks.MineTask;
 import com.fallboo.miner.tasks.OreDrop;
 import com.fallboo.miner.tasks.Sleeping;
 import com.fallboo.miner.tasks.Smelt;

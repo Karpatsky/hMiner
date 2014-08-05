@@ -11,9 +11,9 @@ public class KeyUsing extends Action<ClientContext> {
 
     public KeyUsing(ClientContext ctx) {
         super(ctx);
-        w = ctx.widgets.select().id(1048).poll();
+        keyWidget = ctx.widgets.select().id(1048).poll();
     }
-    Widget w;
+    private final Widget keyWidget;
 
     @Override
     public boolean valid() {
@@ -28,10 +28,10 @@ public class KeyUsing extends Action<ClientContext> {
 
                 @Override
                 public Boolean call() throws Exception {
-                    return w.component(30).visible();
+                    return keyWidget.component(30).visible();
                 }
             }, 100, 6)) {
-                w.component(30).click();
+                keyWidget.component(30).click();
             }
         }
     }

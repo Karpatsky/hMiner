@@ -20,7 +20,8 @@ public class BankOres extends GraphScript.Action<ClientContext> {
     }
 
     @SuppressWarnings("serial")
-    private ArrayList<Integer> picks = new ArrayList<Integer>() {
+    //TODO Set-up a enum for pickaxes as this list is repeated in multiple classes
+    private final ArrayList<Integer> picks = new ArrayList<Integer>() {
         {
             add(1269);
             add(1273);

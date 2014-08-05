@@ -7,7 +7,7 @@ import org.powerbot.script.rt6.Item;
 
 public class OreDrop extends GraphScript.Action<ClientContext> {
 
-    private MiningStyle miningStyle;
+    private final MiningStyle miningStyle;
 
     public OreDrop(ClientContext ctx, MiningStyle miningStyle) {
         super(ctx);
@@ -28,19 +28,20 @@ public class OreDrop extends GraphScript.Action<ClientContext> {
     }
 
     @SuppressWarnings("serial")
-    private ArrayList<Integer> picks = new ArrayList<Integer>() {
+    //TODO Set-up a enum for pickaxes as this list is repeated in multiple classes
+    private final ArrayList<Integer> picks = new ArrayList<Integer>() {
         {
             add(1269);
             add(1273);
             add(1271);
         }
     };
-    
+
     @Override
     public void run() {
         for (Item i : ctx.backpack.items()) {
             if (!picks.contains(i.id())) {
-                
+
                 i.interact("Drop");
             }
         }
