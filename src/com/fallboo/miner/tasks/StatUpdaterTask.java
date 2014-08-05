@@ -31,17 +31,15 @@ public class StatUpdaterTask extends GraphScript.Action<ClientContext> {
     @Override
     public void run() {
         if (miner.getStartLevel() == 0) {
-            int startLevel = ctx.skills.level(Skills.MINING) + ctx.skills.level(Skills.SMITHING);
-            int startXp = ctx.skills.experience(Skills.MINING) + ctx.skills.experience(Skills.SMITHING);
+            int startLevel = ctx.skills.level(Skills.MINING) + ctx.skills.level(Skills.SMITHING),
+                    startXp = ctx.skills.experience(Skills.MINING) + ctx.skills.experience(Skills.SMITHING);
             miner.setStartLevel(startLevel);
             miner.setStartXp(startXp);
-            System.out.println("Setting start XP: " + startXp);
         } else {
-            int currLevel = ctx.skills.level(Skills.MINING) + ctx.skills.level(Skills.SMITHING);
-            int currXp = ctx.skills.experience(Skills.MINING) + ctx.skills.experience(Skills.SMITHING);
+            int currLevel = ctx.skills.level(Skills.MINING) + ctx.skills.level(Skills.SMITHING),
+                    currXp = ctx.skills.experience(Skills.MINING) + ctx.skills.experience(Skills.SMITHING);
             miner.setCurrLevel(currLevel);
             miner.setCurrXp(currXp);
-            System.out.println("Setting current XP: " + currXp);
         }
         lastUpdate = System.currentTimeMillis() + 7500;
     }

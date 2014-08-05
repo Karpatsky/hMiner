@@ -95,6 +95,10 @@ public class AIOMiner extends GraphScript<ClientContext> implements PaintListene
 
     @Override
     public void repaint(Graphics g1) {
+        double timePassed = 0;
+        if (getRuntime() > 0) {
+            timePassed = 3600000D / getRuntime();
+        }
         Graphics2D g = (Graphics2D) g1;
         g.setColor(color1);
         g.fillRoundRect(72, 26, 199, 120, 16, 16);
@@ -110,12 +114,12 @@ public class AIOMiner extends GraphScript<ClientContext> implements PaintListene
         g.setColor(color5);
         g.drawString("Time Running: " + formatTime(getRuntime()), 75, 67);
         if (style == Style.MINING) {
-            g.drawString("Ores Mined: " + oresMined + (oresMined == 0 || getRuntime() <= 0 ? "" : " (" + (int) (oresMined * (3600000D / getRuntime())) + ")"), 75, 87);
+            g.drawString("Ores Mined: " + oresMined + (oresMined == 0 || getRuntime() <= 0 ? "" : " (" + (int) (oresMined * timePassed) + ")"), 75, 87);
         } else if (style == Style.SMELTING) {
-            g.drawString("Bars Smelted: " + oresMined + (oresMined == 0 || getRuntime() <= 0 ? "" : " (" + (int) (oresMined * (3600000D / getRuntime())) + ")"), 75, 87);
+            g.drawString("Bars Smelted: " + oresMined + (oresMined == 0 || getRuntime() <= 0 ? "" : " (" + (int) (oresMined * timePassed) + ")"), 75, 87);
         }
         g.drawString("XP Gained: " + (currXp - startXp)
-                + (currXp == startXp ? "" : " (" + (int) (((currXp - startXp)) * (3600000D / getRuntime())) + ")"), 75, 107);
+                + (currXp == startXp ? "" : " (" + (int) (((currXp - startXp)) * timePassed) + ")"), 75, 107);
         g.drawString("Levels Gained: " + (currLevel - startLevel), 75, 127);
     }
 
@@ -140,7 +144,6 @@ public class AIOMiner extends GraphScript<ClientContext> implements PaintListene
     }
 
     public void setupMining(Mines mine, Ores ores, MiningStyle ms) {
-        System.out.println("Mine selected: " + mine.getName());
         setupNormalActions();
         chain.add(new WalkToMine(ctx, mine));
         chain.add(new Mine(ctx, mine, ores));

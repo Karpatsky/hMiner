@@ -37,17 +37,12 @@ public class Smelt extends GraphScript.Action<ClientContext> {
         final Widget widget = ctx.widgets.select().id(1370).first().poll();
         final Widget close = ctx.widgets.select().id(1251).first().poll();
         Component c = widget.component(20);
-        System.out.println("Mini widget valid : " + c.valid());
-        System.out.println("Mini widget visible : " + c.visible());
         if (!widget.component(20).visible()) {
             final GameObject obj = ctx.objects.nearest().poll();
             if (obj == null) {
-                System.out.println("Break 1");
                 return;
             }
-            System.out.println("Break 2");
             if (!obj.inViewport()) {
-                System.out.println("Break 3");
                 ctx.camera.turnTo(obj);
                 ctx.movement.step(obj);
                 Condition.wait(new Callable<Boolean>() {
@@ -58,14 +53,11 @@ public class Smelt extends GraphScript.Action<ClientContext> {
                     }
                 }, 200, 5);
             }
-            System.out.println("Break 4");
             if (obj.inViewport()) {
-                System.out.println("Break 5");
                 if (Random.nextInt(1, 4) == 2) {
                     ctx.camera.turnTo(obj);
                 }
                 if (obj.interact("Smelt")) {
-                    System.out.println("Break 6");
                     Condition.wait(new Callable<Boolean>() {
 
                         @Override
@@ -78,9 +70,7 @@ public class Smelt extends GraphScript.Action<ClientContext> {
                 }
             }
         }
-        System.out.println("Break 7");
         if (widget.component(20).visible()) {
-            System.out.println("Break 8");
             widget.component(20).click();
             Condition.sleep(1250);
             Condition.wait(new Callable<Boolean>() {

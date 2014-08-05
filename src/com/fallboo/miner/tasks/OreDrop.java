@@ -41,7 +41,6 @@ public class OreDrop extends GraphScript.Action<ClientContext> {
     public void run() {
         for (Item i : ctx.backpack.items()) {
             if (!picks.contains(i.id())) {
-
                 i.interact("Drop");
             }
         }
