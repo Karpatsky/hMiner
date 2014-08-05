@@ -26,8 +26,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.List;
 import org.powerbot.script.MessageEvent;
 import org.powerbot.script.MessageListener;
 import org.powerbot.script.PaintListener;
@@ -37,7 +35,6 @@ import org.powerbot.script.rt6.ClientContext;
 @Script.Manifest(name = "hMiner", description = "Mines ores anywhere F2P")
 public class AIOMiner extends GraphScript<ClientContext> implements PaintListener, MessageListener {
 
-    private List<MineTask> mineTasks = new ArrayList<MineTask>();
     private Gui gui = null;
     private int oresMined = 0;
     private Style style = Style.MINING;
@@ -129,13 +126,11 @@ public class AIOMiner extends GraphScript<ClientContext> implements PaintListene
 
     public void setupSmelt(Furnaces mine, Bars bar) {
         this.style = Style.SMELTING;
-        synchronized (mineTasks) {
-            setupNormalActions();
-            chain.add(new BankBars(ctx, bar));
-            chain.add(new WalkToBank(ctx, null, mine, Style.SMELTING, bar));
-            chain.add(new WalkToFurnace(ctx, mine, bar));
-            chain.add(new Smelt(ctx, mine, bar));
-        }
+        setupNormalActions();
+        chain.add(new BankBars(ctx, bar));
+        chain.add(new WalkToBank(ctx, null, mine, Style.SMELTING, bar));
+        chain.add(new WalkToFurnace(ctx, mine, bar));
+        chain.add(new Smelt(ctx, mine, bar));
     }
 
     private void setupNormalActions() {
@@ -146,16 +141,14 @@ public class AIOMiner extends GraphScript<ClientContext> implements PaintListene
 
     public void setupMining(Mines mine, Ores ores, MiningStyle ms) {
         System.out.println("Mine selected: " + mine.getName());
-        synchronized (mineTasks) {
-            setupNormalActions();
-            chain.add(new WalkToMine(ctx, mine));
-            chain.add(new Mine(ctx, mine, ores));
-            if (ms == MiningStyle.BANK) {
-                chain.add(new BankOres(ctx));
-                chain.add(new WalkToBank(ctx, mine, null, Style.MINING, null));
-            } else {
-                chain.add(new OreDrop(ctx, ms));
-            }
+        setupNormalActions();
+        chain.add(new WalkToMine(ctx, mine));
+        chain.add(new Mine(ctx, mine, ores));
+        if (ms == MiningStyle.BANK) {
+            chain.add(new BankOres(ctx));
+            chain.add(new WalkToBank(ctx, mine, null, Style.MINING, null));
+        } else {
+            chain.add(new OreDrop(ctx, ms));
         }
     }
 
