@@ -5,7 +5,7 @@
  */
 package com.fallboo.miner.tasks;
 
-import com.fallboo.miner.data.Ores;
+import com.fallboo.miner.data.Rocks;
 import java.util.concurrent.Callable;
 import org.powerbot.script.Condition;
 import org.powerbot.script.Filter;
@@ -22,13 +22,13 @@ import org.powerbot.script.rt6.MobileIdNameQuery;
  */
 public class OreClicker {
 
-    private final Ores ores;
+    private final Rocks ores;
     private GameObject interacting = null, next = null;
     private final Filter<Menu.Command> menuFilter;
     private final Filter<GameObject> oreFilter;
     private final ClientContext ctx;
 
-    public OreClicker(ClientContext ctx, final Ores ores) {
+    public OreClicker(ClientContext ctx, final Rocks ores) {
         this.ctx = ctx;
         this.ores = ores;
         menuFilter = new Filter<Menu.Command>() {

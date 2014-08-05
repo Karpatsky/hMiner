@@ -10,7 +10,7 @@ import com.fallboo.miner.data.Bars;
 import com.fallboo.miner.data.Furnaces;
 import com.fallboo.miner.data.Mines;
 import com.fallboo.miner.data.MiningStyle;
-import com.fallboo.miner.data.Ores;
+import com.fallboo.miner.data.Rocks;
 import com.fallboo.miner.data.ScheduledBreak;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class Gui extends javax.swing.JFrame {
         jComboBox2.setModel(new DefaultComboBoxModel(mineNames.toArray(new String[mineNames.size()])));
         Mines mine = Mines.values()[0];
         ArrayList<String> oreNames = new ArrayList<String>();
-        for (Ores ore : mine.getOres()) {
+        for (Rocks ore : mine.getOres()) {
             oreNames.add(ore.getName());
         }
         jComboBox1.setModel(new DefaultComboBoxModel(oreNames.toArray(new String[oreNames.size()])));
@@ -443,15 +443,15 @@ public class Gui extends javax.swing.JFrame {
             return;
         }
         ArrayList<String> oreNames = new ArrayList<String>();
-        for (Ores ore : mine.getOres()) {
+        for (Rocks ore : mine.getOres()) {
             oreNames.add(ore.getName());
         }
         jComboBox1.setModel(new DefaultComboBoxModel(oreNames.toArray(new String[oreNames.size()])));
     }//GEN-LAST:event_jComboBox2ActionPerformed
     private Mines mine;
-    private Ores ore;
+    private Rocks ore;
 
-    public Ores getOre() {
+    public Rocks getOre() {
         return ore;
     }
 
@@ -471,8 +471,8 @@ public class Gui extends javax.swing.JFrame {
                 mine = m;
             }
         }
-        Ores ore = null;
-        for (Ores ores : Ores.values()) {
+        Rocks ore = null;
+        for (Rocks ores : Rocks.values()) {
             if (((String) jComboBox1.getSelectedItem()).equalsIgnoreCase(ores.getName())) {
                 ore = ores;
                 break;

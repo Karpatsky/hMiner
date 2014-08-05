@@ -4,7 +4,7 @@ import com.fallboo.miner.data.Bars;
 import com.fallboo.miner.data.Furnaces;
 import com.fallboo.miner.data.Mines;
 import com.fallboo.miner.data.MiningStyle;
-import com.fallboo.miner.data.Ores;
+import com.fallboo.miner.data.Rocks;
 import com.fallboo.miner.data.ScheduledBreak;
 import com.fallboo.miner.data.Style;
 import com.fallboo.miner.gui.Gui;
@@ -143,7 +143,7 @@ public class AIOMiner extends GraphScript<ClientContext> implements PaintListene
         chain.add(new AntiPattern(ctx));
     }
 
-    public void setupMining(Mines mine, Ores ores, MiningStyle ms) {
+    public void setupMining(Mines mine, Rocks ores, MiningStyle ms) {
         setupNormalActions();
         chain.add(new WalkToMine(ctx, mine));
         chain.add(new Mine(ctx, mine, ores));

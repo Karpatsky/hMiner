@@ -19,7 +19,7 @@ public enum Mines {
                 new Tile(3173, 3390, 0),
                 new Tile(3176, 3380, 0),
                 new Tile(3179, 3370, 0)},
-            new Ores[]{Ores.COPPER, Ores.TIN, Ores.IRON, Ores.SILVER}, new Area(
+            new Rocks[]{Rocks.COPPER, Rocks.TIN, Rocks.IRON, Rocks.SILVER}, new Area(
                     new Tile(3181, 3381, 0),
                     new Tile(3173, 3374, 0),
                     new Tile(3165, 3368, 0),
@@ -42,7 +42,7 @@ public enum Mines {
                 new Tile(3294, 3384, 0),
                 new Tile(3291, 3374, 0),
                 new Tile(3285, 3366, 0)},
-            new Ores[]{Ores.COPPER, Ores.TIN, Ores.IRON}, new Area(
+            new Rocks[]{Rocks.COPPER, Rocks.TIN, Rocks.IRON}, new Area(
                     new Tile(3281, 3374, 0),
                     new Tile(3275, 3366, 0),
                     new Tile(3278, 3356, 0),
@@ -58,7 +58,7 @@ public enum Mines {
                 new Tile(3238, 3164, 0),
                 new Tile(3233, 3152, 0),
                 new Tile(3228, 3147, 0)},
-            new Ores[]{Ores.COPPER, Ores.TIN,}, new Area(
+            new Rocks[]{Rocks.COPPER, Rocks.TIN,}, new Area(
                     new Tile(3219, 3153, 0),
                     new Tile(3219, 3142, 0),
                     new Tile(3236, 3142, 0),
@@ -90,7 +90,7 @@ public enum Mines {
                 new Tile(3148, 3158, 0),
                 new Tile(3148, 3153, 0),
                 new Tile(3146, 3148, 0)},
-            new Ores[]{Ores.COAL, Ores.MITHRIL}, new Area(
+            new Rocks[]{Rocks.COAL, Rocks.MITHRIL}, new Area(
                     new Tile(3145, 3152, 0),
                     new Tile(3141, 3144, 0),
                     new Tile(3142, 3141, 0),
@@ -129,7 +129,7 @@ public enum Mines {
                 new Tile(3298, 3294, 0),
                 new Tile(3298, 3299, 0),
                 new Tile(3299, 3304, 0)},
-            new Ores[]{Ores.COAL, Ores.SILVER, Ores.IRON, Ores.MITHRIL}, new Area(
+            new Rocks[]{Rocks.COAL, Rocks.SILVER, Rocks.IRON, Rocks.MITHRIL}, new Area(
                     new Tile(3300, 3321, 0),
                     new Tile(3294, 3313, 0),
                     new Tile(3294, 3313, 0),
@@ -148,12 +148,12 @@ public enum Mines {
 
     private String name;
     private Tile location, bank;
-    private Ores[] ores;
+    private Rocks[] ores;
     private Tile[] bankToLocation;
     private Area mineArea;
 
     Mines(String name, Tile location, Tile bankLocation, Tile bankToLocation[],
-            Ores[] ores, Area mineArea) {
+            Rocks[] ores, Area mineArea) {
         this.name = name;
         this.location = location;
         this.bank = bankLocation;
@@ -174,7 +174,7 @@ public enum Mines {
         return name;
     }
 
-    public Ores[] getOres() {
+    public Rocks[] getOres() {
         return ores;
     }
 

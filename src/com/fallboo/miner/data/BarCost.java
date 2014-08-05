@@ -11,16 +11,16 @@ package com.fallboo.miner.data;
  */
 public class BarCost {
 
-    private Items item1, item2;
+    private Ores item1, item2;
     private int amnt2 = 0;
 
-    public BarCost(Items item1, Items item2, int amnt2) {
+    public BarCost(Ores item1, Ores item2, int amnt2) {
         this.item1 = item1;
         this.item2 = item2;
         this.amnt2 = amnt2;
     }
 
-    public BarCost(Items item1) {
+    public BarCost(Ores item1) {
         this.item1 = item1;
     }
 
@@ -32,11 +32,11 @@ public class BarCost {
         return amnt2;
     }
 
-    public Items getItem1() {
+    public Ores getItem1() {
         return item1;
     }
 
-    public Items getItem2() {
+    public Ores getItem2() {
         return item2;
     }
 

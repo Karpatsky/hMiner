@@ -6,17 +6,17 @@ import org.powerbot.script.Condition;
 import org.powerbot.script.rt6.ClientContext;
 
 import com.fallboo.miner.data.Mines;
-import com.fallboo.miner.data.Ores;
+import com.fallboo.miner.data.Rocks;
 import org.powerbot.script.Random;
 import org.powerbot.script.rt6.Interactive;
 
 public class Mine extends GraphScript.Action<ClientContext> {
 
     private final Mines mine;
-    private final Ores ore;
+    private final Rocks ore;
     private final OreClicker oreClicker;
 
-    public Mine(ClientContext ctx, Mines mines, Ores ores) {
+    public Mine(ClientContext ctx, Mines mines, Rocks ores) {
         super(ctx);
         oreClicker = new OreClicker(ctx, ores);
         this.mine = mines;

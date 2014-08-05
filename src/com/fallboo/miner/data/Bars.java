@@ -2,7 +2,7 @@ package com.fallboo.miner.data;
 
 public enum Bars {
 
-    BRONZE(2349, new BarCost(Items.COPPER, Items.TIN, 1), 14), IRON(2351, new BarCost(Items.IRON), 28), STEEL(2353, new BarCost(Items.IRON, Items.COAL, 2), 9);
+    BRONZE(2349, new BarCost(Ores.COPPER, Ores.TIN, 1), 14), IRON(2351, new BarCost(Ores.IRON), 28), STEEL(2353, new BarCost(Ores.IRON, Ores.COAL, 2), 9);
     private int id, primaryAmount;
     private BarCost cost;
 
