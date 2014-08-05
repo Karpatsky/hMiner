@@ -1,17 +1,22 @@
 package com.fallboo.miner.tasks;
 
 import com.fallboo.miner.data.MiningStyle;
+import com.fallboo.miner.data.Ores;
 import java.util.ArrayList;
+import org.powerbot.script.Condition;
+import org.powerbot.script.Random;
 import org.powerbot.script.rt6.ClientContext;
 import org.powerbot.script.rt6.Item;
 
 public class OreDrop extends GraphScript.Action<ClientContext> {
 
     private final MiningStyle miningStyle;
+    private final Ores ore;
 
-    public OreDrop(ClientContext ctx, MiningStyle miningStyle) {
+    public OreDrop(ClientContext ctx, MiningStyle miningStyle, Ores ore) {
         super(ctx);
         this.miningStyle = miningStyle;
+        this.ore = ore;
     }
 
     @Override
@@ -39,6 +44,19 @@ public class OreDrop extends GraphScript.Action<ClientContext> {
 
     @Override
     public void run() {
+        if (!ctx.combatBar.select().id(ore.getId()).isEmpty()) {
+            int ores = 0;
+            for (Item i : ctx.backpack.items()) {
+                if (!picks.contains(i.id())) {
+                    ores++;
+                }
+            }
+            int key = ctx.combatBar.poll().slot() + 1;
+            for (int i = 0; i <= ores + (miningStyle == MiningStyle.M1D1 ? 0 : Random.nextInt(0, 3)); i++) {
+                ctx.input.send("{VK_" + key + "}");
+                Condition.sleep(100);
+            }
+        }
         for (Item i : ctx.backpack.items()) {
             if (!picks.contains(i.id())) {
                 i.interact("Drop");
